@@ -24,6 +24,8 @@
 <script> 
 correct=0
 wrong = 0
+t=0
+r=0
 function checkGuess(){
     console.log("Getting form values")
     age = document.getElementById("form1_age").value
@@ -32,13 +34,24 @@ function checkGuess(){
     out = document.getElementById("result")
     if(age==nick){
         correct=correct + 1
+        t=t+1
         out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
         alert("You got it right")
     } else {
         wrong = wrong + 1
+        r=r+1
+        if(t==0 && r%3==0 && r!=0){
+            alert("Sorry, game over!")
+            return
+        }
+        else if(t>0){
+            t=0
+            r=0
+        }
         out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
         alert("Wrong Musician")
     }
+    
 
 }
 </script>
